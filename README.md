@@ -8,7 +8,7 @@ Sporks is a simple To-Do app that will eventually grow in complexity to mimic th
 
 The purpose is for me to learn and fill in any gaps in my programming knowledge (solidify fundamentals) and apply any new concepts and best practices I learn in order to solidify my understanding in them. I also want to become more proficient at JavaScript and React.
 
-Note: I have gotten stuck in the "planning/designing phase" before so I wanted to reference products that already exist so I don't have to spend too much time deciding how things look or work. That way I can get started with coding it out and solving the more interesting problems sooner.
+Note: I have gotten stuck in the "planning/designing phase" before so I wanted to reference products that already exist so I don't have to spend too much time deciding how things look or what they do. That way I can get started with coding it out and solving the more interesting problems sooner.
 <br></br>
 
 ### Things I want to incorporate/learn:
