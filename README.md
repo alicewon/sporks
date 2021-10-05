@@ -71,6 +71,11 @@ v3: Add detailed items, Mimic Google Tasksboard Features
 - Items can be dragged and dropped into columns
 - Columns can be dragged around and reordered?
 - Items can be edited in detail (modal with label, details, assignee, due date, subtasks)
+![](images/taskboard_itemdetail.png)
+![](images/taskboard_lists.png)
+![](images/taskboard_listedit.png)
+
+
 
 v4: Add Teams, Mimic Trello Features
 - Basic CRUD for a team (a team can have multiple users)
