@@ -6,7 +6,7 @@ Sporks is a simple To-Do app that will eventually grow in complexity to mimic th
 
 ## Goals for this project:
 
-The purpose is for me to learn and fill in any gaps in my programming knowledge (solidify fundamentals) and apply any new concepts and best practices I learn in order to solidify my understanding in them. I also want to become more proficient at JavaScript and React.
+The purpose is for me to build a full stack application to learn about and fill in any gaps in my programming knowledge (solidify fundamentals). I would like to use this to apply any new concepts and best practices I learn in order to solidify my understanding in them. I also want to become more proficient in JavaScript and React and strengthen my problem solving skills.
 
 Note: I have gotten stuck in the "planning/designing phase" before so I wanted to reference products that already exist so I don't have to spend too much time deciding how things look or what they do. That way I can get started with coding it out and solving the more interesting problems sooner.
 <br></br>
