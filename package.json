@@ -1,0 +1,31 @@
+{
+  "name": "sporks",
+  "version": "1.0.0",
+  "description": "## What is Sporks? Sporks is a simple To-Do app that will eventually grow in complexity to mimic the capabilities of Google TasksBoard/Trello/Jira. Why is it called Sporks? I could make up some metaphor about how sporks are versatile and do two things at once, but I mostly just like how it sounds. <br></br>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --port 3000",
+    "build": "NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alicewon/sporks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alicewon/sporks/issues"
+  },
+  "homepage": "https://github.com/alicewon/sporks#readme",
+  "devDependencies": {
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  }
+}
