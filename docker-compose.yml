@@ -6,5 +6,8 @@ services:
     container_name: mariadb
     ports:
       - "3306:3306"
+    volumes:
+      - ./db/table/tasks.sql:/docker-entrypoint-initdb.d/01-tasks.sql:ro
+      - ./db/data/tasks_data.sql:/docker-entrypoint-initdb.d/02-tasks_data.sql:ro
     environment:
       MYSQL_ROOT_PASSWORD: password
