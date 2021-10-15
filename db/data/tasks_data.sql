@@ -1,6 +1,5 @@
 use sporksdb;
 
-
 INSERT INTO tasks(item, completed)
 VALUES
 ('buy dog food', 0),
