@@ -1,8 +1,9 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import logger from "koa-logger";
-import healthcheckRoutes from "./routes/healthcheck";
+import healthcheckRoutes from "~/routes/healthcheck";
 import Router from '@koa/router';
+
 const router = new Router();
 
 const app = new Koa();
@@ -16,13 +17,11 @@ router.post('/', ctx => {
 app
   .use(bodyParser());
 app
-  .use(require('koa-body')())
-app
   .use(logger());
 app
   .use(healthcheckRoutes.routes());
 
-const server = app
+app
   .listen(PORT, async () => {
     console.log(`Server listening on port: ${PORT}`);
   })
@@ -30,4 +29,4 @@ const server = app
     console.log(err);
   });
 
-export default server;
+// export default server;

@@ -1,6 +1,7 @@
-const mariadb = require('mariadb');
+import mariadb from 'mariadb';
 const pool = mariadb.createPool({
-     host: 'localhost:3306',
+     host: 'localhost',
+     port: '3306',
      user:'root',
      password: 'password',
      connectionLimit: 50,
@@ -12,16 +13,12 @@ class Mariadb {
   constructor () {
 
   }
-  query () {
-    return new Promise((resolve, reject) => {
-      pool.query('SELECT * from tasks_data', function (error, results, fields) {
-          if (error) {
-              throw error
-          };
-          resolve(results)
-          // console.log('The solution is: ', results[0].solution);
-      });
-    })
+  async query () {
+      try {
+          return await pool.query('SELECT * FROM tasks');
+      } catch (error) {
+          console.error(error);
+      }
   }
 }
 
@@ -43,4 +40,4 @@ class Mariadb {
 // }
 
 // module.exports = new Mariadb()
-export default Mariadb;
+export default new Mariadb();

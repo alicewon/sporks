@@ -1,6 +1,6 @@
 import Router from '@koa/router';
 // const Mariadb = require('/Users/alice.w/Development/sporks/utils/db.js');
-import Mariadb from "/Users/alice.w/Development/sporks/utils/db";
+import Mariadb from "~/utils/db";
 
 const router = new Router();
 
@@ -27,9 +27,9 @@ router.post('/world', ctx => {
 
 
 // crud methods:
-router.get('/tasks', ctx => {
+router.get('/tasks', async ctx => {
   console.log(ctx.params);
-  let data = Mariadb.query()
+  let data = await Mariadb.query()
   ctx.body = {"data": data};
 });
 
