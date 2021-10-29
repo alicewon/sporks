@@ -22,6 +22,7 @@
   "homepage": "https://github.com/alicewon/sporks#readme",
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^27.0.2",
     "@types/koa": "^2.13.4",
     "@types/node": "^16.11.6",
     "@types/react-dom": "^17.0.9",
