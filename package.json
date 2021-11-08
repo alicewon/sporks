@@ -4,9 +4,11 @@
   "description": "## What is Sporks? Sporks is a simple To-Do app that will eventually grow in complexity to mimic the capabilities of Google TasksBoard/Trello/Jira. Why is it called Sporks? I could make up some metaphor about how sporks are versatile and do two things at once, but I mostly just like how it sounds. <br></br>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --port 3000",
-    "build": "NODE_ENV=production webpack"
+    "build": "ttsc",
+    "watch": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/main.ts --log-config=./config/logconfig-localdev.yml",
+    "start": "node dist/server.js",
+    "test": "NODE_ENV=test PORT=3001 jest",
+    "test:watch": "npm run test -- --watchAll"
   },
   "repository": {
     "type": "git",
@@ -19,23 +21,67 @@
   },
   "homepage": "https://github.com/alicewon/sporks#readme",
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^27.0.2",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^5.0.2",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa__router": "^8.0.8",
+    "@types/node": "^16.11.6",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router": "^5.1.17",
+    "@types/supertest": "^2.0.11",
+    "commonjs": "0.0.1",
     "css-loader": "^6.4.0",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.3.1",
     "mini-css-extract-plugin": "^2.4.2",
     "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript-transform-paths": "^2.2.4",
     "typescript": "^4.4.4",
-    "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.0",
-    "webpack-dev-server": "^4.3.1"
+    "ttypescript": "^1.5.12",
+    "tsc-watch": "^4.5.0",
+    "tsconfig-paths": "^3.11.0",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.0"
   },
   "dependencies": {
     "@koa/router": "^10.0.0",
-    "@types/react-router": "^5.1.17",
     "koa": "^2.13.4",
-    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
     "koa-ejs": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "mariadb": "^2.5.5",
+    "npm": "^8.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "roots": [
+      "<rootDir>/__tests__"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

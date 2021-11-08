@@ -1,18 +1,27 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "strict": true,
+    "target": "es2019",
+    "module": "commonjs",
     "sourceMap": true,
-    "target": "esnext",
+    "outDir": "dist",
+    "strict": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" }
+    ]
   },
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    "src/**/*.test.ts"
+  ],
+  "include": ["src/**/*.ts", "src/**/*.js"]
 }
