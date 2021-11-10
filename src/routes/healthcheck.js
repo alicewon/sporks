@@ -1,5 +1,4 @@
 import Router from '@koa/router';
-// const Mariadb = require('/Users/alice.w/Development/sporks/utils/db.js');
 import Mariadb from "~/utils/db";
 
 const router = new Router();
@@ -29,29 +28,37 @@ router.post('/world', ctx => {
 // crud methods:
 router.get('/tasks', async ctx => {
   console.log(ctx.params);
-  let data = await Mariadb.query()
+  let data = await Mariadb.getAllTasks()
   ctx.body = {"data": data};
 });
 
-router.get('/tasks/byid' , ctx => {
+router.get('/tasks/:id', async ctx => {
+  console.log(ctx.params.id);
+  let data = await Mariadb.getById(ctx.params.id)
+  ctx.body = {"data": data};
+});
+
+router.post('/tasks/delete/:id', async ctx => {
+  console.log(ctx.params.id);
+  let data = Mariadb.getById(ctx.params.id);
+  await Mariadb.deleteById(ctx.params.id)
+  ctx.body = {"to-be-deleted": data};
+});
+
+router.post('/tasks/add', async ctx => {
   console.log(ctx.params);
-  ctx.body = 'tasks by id'
+  let data = await Mariadb.add(ctx.params)
+  ctx.body = {"data": data}
 })
 
-router.post('/tasks' , ctx => {
-  console.log(ctx.params);
-  ctx.body = 'adding task'
-})
+router.post('/tasks/update/:id', async ctx => {
+  console.log(ctx.params.id);
+  await Mariadb.updateById(ctx.params.id)
+  ctx.body = {"sucess-updated-data": Mariadb.getById(ctx.params.id)};
+});
 
-router.post('/tasks/byid' , ctx => {
-  console.log(ctx.params);
-  ctx.body = 'edit task by id'
-})
 
-router.post('/tasks/byid' , ctx => {
-  console.log(ctx.params);
-  ctx.body = 'remove by id'
-})
+
 
 
 export default router;

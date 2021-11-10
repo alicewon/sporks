@@ -2,7 +2,7 @@ use sporksdb;
 
 INSERT INTO tasks(item, completed)
 VALUES
-('buy dog food', 0),
+('buy dog food', 1),
 ('groceries', 0),
 ('water plants', 1),
 ('run in a circle', 0),

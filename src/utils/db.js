@@ -13,31 +13,51 @@ class Mariadb {
   constructor () {
 
   }
-  async query () {
+  async getAllTasks() {
       try {
           return await pool.query('SELECT * FROM tasks');
       } catch (error) {
           console.error(error);
       }
   }
+
+  async getById(id) {
+      let query = `SELECT * FROM tasks WHERE ID = ${id.toString()}`;
+      try {
+          return await pool.query(query);
+      } catch (error) {
+          console.error(error);
+      }
+  }
+
+  async deleteById(id) {
+        let query = `DELETE FROM tasks WHERE ID = ${id.toString()}`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async add(task) {
+        let query = `INSERT INTO tasks(item)VALUES(${task})`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+async updateById(id) {
+    let query = `UPDATE FROM tasks WHERE ID = ${id.toString()}`;
+    try {
+        return await pool.query(query);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 
-// async function asyncFunction() {
-//   let conn;
-//   try {
-// 	    conn = await pool.getConnection();
-//       const rows = await conn.query("SELECT 1 as val");
-//       console.log(rows); //[ {val: 1}, meta: ... ]
-//       const res = await conn.query("INSERT INTO tasks value (?, ?)", [1, "mariadb"]);
-//       console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
+}
 
-//   } catch (err) {
-// 	    throw err;
-//   } finally {
-// 	    if (conn) return conn.end();
-//   }
-// }
-
-// module.exports = new Mariadb()
 export default new Mariadb();
