@@ -13,31 +13,52 @@ class Mariadb {
   constructor () {
 
   }
-  async query () {
+    async getAllTasks() {
+      let query = 'SELECT * FROM tasks'
       try {
-          return await pool.query('SELECT * FROM tasks');
+          return await pool.query(query);
       } catch (error) {
           console.error(error);
       }
-  }
+    }
+
+    async getById(id) {
+      let query = `SELECT * FROM tasks WHERE ID = ${id.toString()}`;
+      try {
+          return await pool.query(query);
+      } catch (error) {
+          console.error(error);
+      }
+    }
+
+    async add(column, value) {
+        let query = `INSERT INTO tasks (${column}) VALUES ("${value}")`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    async updateById(id, column, newValue) {
+        let query = `UPDATE tasks SET ${column} = ("${newValue}") WHERE ID = ("${id.toString()}")`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async deleteById(id) {
+        let query = `DELETE FROM tasks WHERE ID = ${id.toString()}`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 }
 
-
-// async function asyncFunction() {
-//   let conn;
-//   try {
-// 	    conn = await pool.getConnection();
-//       const rows = await conn.query("SELECT 1 as val");
-//       console.log(rows); //[ {val: 1}, meta: ... ]
-//       const res = await conn.query("INSERT INTO tasks value (?, ?)", [1, "mariadb"]);
-//       console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-
-//   } catch (err) {
-// 	    throw err;
-//   } finally {
-// 	    if (conn) return conn.end();
-//   }
-// }
-
-// module.exports = new Mariadb()
 export default new Mariadb();
