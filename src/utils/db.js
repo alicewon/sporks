@@ -13,24 +13,44 @@ class Mariadb {
   constructor () {
 
   }
-  async getAllTasks() {
+    async getAllTasks() {
+      let query = 'SELECT * FROM tasks'
       try {
-          return await pool.query('SELECT * FROM tasks');
+          return await pool.query(query);
       } catch (error) {
           console.error(error);
       }
-  }
+    }
 
-  async getById(id) {
+    async getById(id) {
       let query = `SELECT * FROM tasks WHERE ID = ${id.toString()}`;
       try {
           return await pool.query(query);
       } catch (error) {
           console.error(error);
       }
-  }
+    }
 
-  async deleteById(id) {
+    async add(column, value) {
+        let query = `INSERT INTO tasks (${column}) VALUES ("${value}")`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    async updateById(id, column, newValue) {
+        let query = `UPDATE tasks SET ${column} = ("${newValue}") WHERE ID = ("${id.toString()}")`;
+        try {
+            return await pool.query(query);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async deleteById(id) {
         let query = `DELETE FROM tasks WHERE ID = ${id.toString()}`;
         try {
             return await pool.query(query);
@@ -38,25 +58,6 @@ class Mariadb {
             console.error(error);
         }
     }
-
-    async add(task) {
-        let query = `INSERT INTO tasks(item)VALUES(${task})`;
-        try {
-            return await pool.query(query);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-async updateById(id) {
-    let query = `UPDATE FROM tasks WHERE ID = ${id.toString()}`;
-    try {
-        return await pool.query(query);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 
 }
 
