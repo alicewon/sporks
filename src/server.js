@@ -1,7 +1,8 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import logger from "koa-logger";
-import healthcheckRoutes from "~/routes/healthcheck";
+import tasksRoutes from "~/routes/tasks";
+
 import Router from '@koa/router';
 
 const router = new Router();
@@ -9,17 +10,12 @@ const router = new Router();
 const app = new Koa();
 const PORT = process.env.PORT || 3000;
 
-router.post('/', ctx => {
-  console.log(ctx.params);
-  ctx.body = 'goodbyeWorld';
-});
-
 app
   .use(bodyParser());
 app
   .use(logger());
 app
-  .use(healthcheckRoutes.routes());
+  .use(tasksRoutes.routes());
 
 app
   .listen(PORT, async () => {
@@ -28,5 +24,3 @@ app
   .on("error", err => {
     console.log(err);
   });
-
-// export default server;

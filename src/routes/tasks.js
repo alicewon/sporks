@@ -3,27 +3,6 @@ import Mariadb from "~/utils/db";
 
 const router = new Router();
 
-router.get(`/ping`, async (ctx) => {
-  try {
-    ctx.body = {
-      status: "success",
-      data: "pong"
-    };
-  } catch (err) {
-    console.error(err);
-  }
-});
-
-router.get('/', ctx => {
-  ctx.body = 'Hello World';
-});
-
-router.post('/world', ctx => {
-  console.log(ctx.params);
-  ctx.body = 'goodbyeWorld';
-});
-
-
 // curl -X GET http://localhost:3000/tasks
 router.get('/tasks', async ctx => {
   let data = await Mariadb.getAllTasks()
@@ -47,7 +26,7 @@ router.post('/tasks/add', async ctx => {
   let column = Object.keys(ctx.request.body)[0];
   let value = ctx.request.body[column];
 
-  let data = await Mariadb.add(column, value);
+  let data = await Mariadb.add(value);
   ctx.body = {"data": data}
 })
 
@@ -61,10 +40,7 @@ router.post('/tasks/update/:id', async ctx => {
   let id = ctx.params.id
   let column = Object.keys(ctx.request.body)[0];
   let newValue = ctx.request.body[column];
-
-  await Mariadb.updateById(id, column, newValue)
-  // ctx.body = {"sucess-updated-data": Mariadb.getById(id)};
-  ctx.body = {"updating": "true"};
+  await Mariadb.updateById(column, newValue, id)
 });
 
 
